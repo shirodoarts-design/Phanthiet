@@ -1,0 +1,415 @@
+/* 1. The Background Overlay */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    backdrop-filter: blur(8px); /* The blur effect */
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. The Main White Layout */
+.modal-content {
+    background-color: white;
+    width: 80%;
+    max-width: 1000px;
+    height: 70vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    animation: popIn 0.4s ease-out; /* Animation */
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* 3. The Article/Image Split */
+.modal-body {
+    display: flex;
+    height: 100%;
+}
+
+.modal-article {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto; /* Adds scrollbar if text is too long */
+    max-height: 100%;
+}
+
+.modal-image {
+    flex: 1;
+}
+.modal-image-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden; /* Hides images not in view */
+}
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 4. Buttons */
+.close-btn {
+    position: absolute;
+    top: -40px; /* Outside top-right as per your sketch */
+    right: 0;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+.slider-wrapper {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out; /* Smooth slide animation */
+}
+
+.slider-wrapper img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Hover Arrows */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s;
+    font-size: 20px;
+}
+
+.modal-image-container:hover .slider-arrow {
+    opacity: 1; /* Show on hover */
+}
+
+.prev { left: 0; }
+.next { right: 0; }
+.book-now {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 25px;
+    background: #1a237e;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+html {
+    scroll-behavior: smooth;
+    /* If you have a fixed navigation bar, add its height here */
+    scroll-padding-top: 20px; 
+}
+
+#Learnmore {
+    /* Ensure the section has enough space to scroll into */
+    padding: 80px 0;
+}
+h2, h1, h3, h4, h5 {
+    /* Playfair Display handles Vietnamese diacritics beautifully */
+    font-family: 'Playfair Display', serif;
+    color: #1a237e;
+    font-size: 60px;
+    line-height: 1.1;
+}
+
+li, p {
+    /* Use a clean sans-serif like Roboto or Inter for the body text */
+    font-family: 'Roboto', sans-serif;
+    color: #1a237e;
+    line-height: 1.6;
+}
+#Learnmore {
+    text-align: center;
+    padding: 50px 20px;
+    font-family: 'Serif', Georgia, serif;
+}
+
+#Learnmore h2 {
+    font-size: 48px;
+    color: #1a237e; /* Deep navy blue */
+    margin-bottom: 40px;
+}
+
+/* The horizontal layout */
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between the three columns */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    flex: 1; /* Makes all three cards equal width */
+    display: flex;
+    flex-direction: column;
+}
+
+.smallwindow {
+    width: 100%;
+    height: 250px; /* Adjust height to match your image aspect ratio */
+    object-fit: cover; /* Prevents the image from stretching */
+    display: block;
+}
+
+/* The text box with the border */
+.text-box {
+    border: 1px solid #7e8eb1; /* Thin blue-grey border */
+    margin-top: 20px; /* Gap between image and border box */
+    padding: 25px;
+    text-align: left;
+    height: 100%; /* Ensures all boxes are the same height */
+}
+
+.text-box h4 {
+    font-size: 22px;
+    color: #1a237e;
+    margin-bottom: 15px;
+}
+
+.text-box p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+.thetitle {
+    /* Background Setup */
+    background-size: 105%;
+    background-image: url('references/16264-7x3.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Full screen height */
+    width: 100%;
+    
+    /* Centering Content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Serif', Georgia, Times, serif; /* Match the elegant look */
+}
+
+/* "WELCOME TO" text */
+.thetitle h3:first-of-type {
+    font-size: 14px;
+    letter-spacing: 5px; /* Wide spacing like the image */
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+/* "Phan Thiet" Main Title */
+.thetitle h1 {
+    font-size: 120px; /* Adjust based on preference */
+    color: #96efff; /* The blue color from your image */
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.1;
+}
+
+/* "Thủ phủ resort" subtitle */
+.thetitle h3:last-of-type {
+    font-size: 28px;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    color: #ffffff;
+}
+
+/* The "LEARN MORE" Button */
+.btn-learn {
+    display: inline-block;
+    padding: 12px 35px;
+    background-color: #fff;
+    color: #002366; /* Dark navy text */
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+.btn-learn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+.split-section {
+    display: flex;
+    align-items: center; /* Vertically centers the text against the image */
+    justify-content: space-between;
+    padding: 80px 10%; /* Adds generous white space on sides */
+    gap: 50px; /* Space between text and image */
+    font-family: 'Serif', Georgia, serif;
+}
+
+/* Text Container */
+.content-side {
+    flex: 1; /* Takes up 50% of the space */
+}
+
+.content-side h2 {
+    font-size: 60px;
+    color: #1a237e; /* The deep navy blue from your design */
+    line-height: 1.1;
+    margin-bottom: 40px;
+}
+
+.content-side ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.content-side li {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #1a237e;
+    margin-bottom: 15px; /* Spacing between bullet points */
+}
+
+/* Image Container */
+.image-side {
+    flex: 1; /* Takes up the other 50% */
+}
+
+.image-side img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.1); /* Optional: adds a soft depth */
+}
+
+/* Responsive: Stack them on top of each other on mobile */
+@media (max-width: 768px) {
+    .split-section {
+        flex-direction: column;
+        padding: 40px 5%;
+    }
+}
+.footer-section {
+    background-color: #0d144a; /* Deep navy blue */
+    color: white;
+    padding: 80px 10%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif; /* Or any elegant serif font */
+    font-size: 32px;
+    margin-bottom: 50px;
+}
+
+.contact-wrapper {
+    display: flex;
+    gap: 40px; /* Space between the two boxes */
+    flex-wrap: wrap;
+}
+
+.contact-box {
+    border: 1px solid rgba(255, 255, 255, 0.6); /* Thin white border */
+    padding: 30px;
+    min-width: 300px;
+    flex: 1;
+}
+
+.contact-box * {
+    color:rgb(206, 239, 255);
+    font-size: 24px;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+.contact-box p {
+    color: rgb(206, 239, 255)
+}
+/* Styling for Info Items (Address, Phone, Email) */
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.info-item .icon {
+    font-size: 18px;
+}
+
+.info-item p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Styling for Office Hours */
+.hour-item {
+    margin-bottom: 20px;
+}
+
+.hour-item h5 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.hour-item p {
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+    }
+}
+/* Dark overlay that covers the whole screen */
+.tutorial-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998; /* Just below the expanded modal */
+    display: none; /* Hidden by default */
+    pointer-events: none; /* Allows clicking through to the section */
+}
+
+/* Tutorial Hint Text */
+.tutorial-hint {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    z-index: 999;
+    display: none;
+}
+
+/* When tutorial is active, bring the hovered section to the front */
+.tutorial-active .split-section:hover {
+    position: relative;
+    z-index: 1001;
+    background: white; /* Keeps it bright against the dark */
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+}
+
+/* Disable scrolling class */
+.no-scroll {
+    overflow: hidden;
+}
